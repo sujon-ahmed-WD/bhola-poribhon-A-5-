@@ -57,8 +57,12 @@ for (let i of seat) {
   });
 }
 let cuppon = document.getElementById("coupon-input");
+
 function cupponapply() {
   if (cuppon.value == "NEW15") {
+    let coupConatanier = document.getElementById("coupon-container");
+    coupConatanier.classList.add("hidden");
+  } else if (cuppon.value == "Couple 20") {
     let coupConatanier = document.getElementById("coupon-container");
     coupConatanier.classList.add("hidden");
   }
