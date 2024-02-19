@@ -1,11 +1,13 @@
 let count = 1;
 let decresit = 7;
+let array = [];
 let seatLeft = document.getElementById("seat-left");
 let seatCount = document.getElementById("seat-count");
 let totalPrice = parseInt(document.getElementById("total-price").innerText);
 let grandtotalPrice = parseInt(
   document.getElementById("grand-total").innerText
 );
+let applybutton = document.getElementById("apply-btn");
 
 let seat = document.getElementsByClassName("sujon");
 for (let i of seat) {
@@ -25,6 +27,16 @@ for (let i of seat) {
     let p3 = document.createElement("td");
 
     let seatNumber = i.innerText;
+    array.push(seatNumber);
+    let arraylength = array.length;
+    if (arraylength >= 5) {
+      alert("you can selceted four seat");
+      i.classList.remove("bg-[#1DD100]");
+      return;
+    }
+    if (arraylength > 3) {
+      applybutton.removeAttribute("disabled", true);
+    }
 
     p1.innerText = seatNumber;
     p2.innerText = "Economy";
@@ -43,4 +55,11 @@ for (let i of seat) {
     document.getElementById("total-price").innerText = totalPrice;
     document.getElementById("grand-total").innerText = totalPrice;
   });
+}
+let cuppon = document.getElementById("coupon-input");
+function cupponapply() {
+  if (cuppon.value == "NEW15") {
+    let coupConatanier = document.getElementById("coupon-container");
+    coupConatanier.classList.add("hidden");
+  }
 }
